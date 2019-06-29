@@ -49,7 +49,9 @@ script:
   - curl -L https://github.com/Kitware/CMake/releases/download/v3.13.4/cmake-3.13.4-Linux-x86_64.tar.gz -o cmake-3.13.4-Linux-x86_64.tar.gz 
   - tar xf cmake-3.13.4-Linux-x86_64.tar.gz
   - export PATH=${PWD}/cmake-3.13.4-Linux-x86_64/bin:${PATH}
-
+  - echo "HERE"
+  - echo $BUILD
+  - echo "DONE"
   - bash configure
   - bash scripts/make_compiler.sh
   - bash scripts/run_tests.sh
