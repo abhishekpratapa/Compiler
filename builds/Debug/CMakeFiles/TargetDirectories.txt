@@ -1,0 +1,8 @@
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/CMakeFiles/rebuild_cache.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/CMakeFiles/edit_cache.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/src/CMakeFiles/rebuild_cache.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/src/CMakeFiles/edit_cache.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/src/CMakeFiles/acc.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/test/CMakeFiles/rebuild_cache.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/test/CMakeFiles/edit_cache.dir
+/Users/romieklund/Desktop/Github/Compiler/builds/Debug/test/CMakeFiles/test_executable.dir
