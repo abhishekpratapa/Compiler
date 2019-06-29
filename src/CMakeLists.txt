@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13.3)
+cmake_minimum_required(VERSION 3.12.4)
 project(Compiler)
 
 set(EXECUTABLE_OUTPUT_PATH ${parent_directory}/target/)
