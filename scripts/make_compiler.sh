@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd builds/Debug
+cd builds/$1
 make -j8
