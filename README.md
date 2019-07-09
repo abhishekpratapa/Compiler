@@ -4,7 +4,11 @@
 
 This is going to be my attempt at building a compiler. We'll see how it goes.
 
-## Argument Parser
+## The Code Breakdown
+
+Here is a code breakdown for the Compiler
+
+### Argument Parser
 
 code: `src/utils/argument_parser.cc`
 
