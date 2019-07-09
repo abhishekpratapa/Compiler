@@ -15,8 +15,8 @@ To build the compiler first run the `configure` command and make sure that you g
 
 ### Building for Debug
 
-Change directories to `build/Debug` and run the `make` command. The output of the compilation should be in the `/targets` folder.
+Change directories to `build/Debug` and run the `make` command. The output of the compilation should be in the `/target` folder.
 
 ### Building for Release
 
-Change directories to `build/Release` and run the `make` command. The output of the compilation should be in the `/targets` folder.
+Change directories to `build/Release` and run the `make` command. The output of the compilation should be in the `/target` folder.
