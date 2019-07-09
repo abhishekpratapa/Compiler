@@ -9,9 +9,15 @@ include_directories(${src_includes})
 find_package(Boost COMPONENTS program_options REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 
+set(src_files
+  lexical_analyzer.cc
+  utils/argument_parser.cc
+  utils/file_utilities.cc
+)
+
 add_executable(acc
   main.cc
-  utils/argument_parser.cc
+  ${src_files}
 )
 
 target_link_libraries(acc
@@ -19,7 +25,7 @@ target_link_libraries(acc
 )
 
 add_library(acc_testing
-  utils/argument_parser.cc
+  ${src_files}
 )
 
 target_link_libraries(acc_testing

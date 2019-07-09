@@ -1,8 +1,8 @@
 #include <utils/argument_parser.h>
 
-ERROR_CODE argument_parse(std::string &output_program_name,
-                          std::vector<std::string> &file_list, int argc,
-                          char *argv[]) {
+ERROR_CODE acc::utils::argument_parse(std::string &output_program_name,
+                                      std::vector<std::string> &file_list,
+                                      int argc, char *argv[]) {
   output_program_name = DEFAULT_PROGRAM_NAME;
 
   for (int x = 1; x < argc; x++) {

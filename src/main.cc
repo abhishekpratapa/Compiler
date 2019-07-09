@@ -1,6 +1,10 @@
 #include <stdlib.h>
 
+#include <lexical_analyzer.h>
 #include <utils/argument_parser.h>
+
+using namespace acc::lexical_analyzer;
+using namespace acc::utils;
 
 int main(int argc, char *argv[]) {
   std::string output_program_name;
@@ -11,6 +15,8 @@ int main(int argc, char *argv[]) {
   if (code != NO_ERROR) {
     exit(code);
   }
+
+  std::vector<Token> tokens = tokenize_file(file_list);
 
   return 0;
 }

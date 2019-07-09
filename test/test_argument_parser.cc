@@ -5,6 +5,8 @@
 #include <boost/test/unit_test.hpp>
 #include <utils/argument_parser.h>
 
+using namespace acc::utils;
+
 BOOST_AUTO_TEST_SUITE(argument_parser)
 
 BOOST_AUTO_TEST_CASE(default_output_file) {
