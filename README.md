@@ -4,9 +4,13 @@
 
 This is going to be my attempt at building a compiler. We'll see how it goes.
 
+## Build
+
+Build the project by following the directions in the [Build](https://github.com/abhishekpratapa/Compiler/blob/master/BUILD.md) document.
+
 ## The Code Breakdown
 
-Here is a code breakdown for the Compiler
+Here is a code breakdown for the Compiler its high level functions.
 
 ### Argument Parser
 
