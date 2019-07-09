@@ -11,9 +11,9 @@ BOOST_AUTO_TEST_CASE(default_output_file) {
   // MOCK `argc` and `argv`
   int argc = 2;
   char **argv;
-  argv = (char **)malloc(argc);
-  argv[0] = (char *)malloc(100);
-  argv[1] = (char *)malloc(100);
+  argv = (char **)malloc(argc * sizeof(char *));
+  argv[0] = (char *)malloc(100 * sizeof(char));
+  argv[1] = (char *)malloc(100 * sizeof(char));
 
   std::string FILE_NAME = "main.cc";
 
@@ -41,9 +41,9 @@ BOOST_AUTO_TEST_CASE(no_output_file) {
   // MOCK `argc` and `argv`
   int argc = 2;
   char **argv;
-  argv = (char **)malloc(argc);
-  argv[0] = (char *)malloc(100);
-  argv[1] = (char *)malloc(100);
+  argv = (char **)malloc(argc * sizeof(char *));
+  argv[0] = (char *)malloc(100 * sizeof(char));
+  argv[1] = (char *)malloc(100 * sizeof(char));
 
   strcpy(argv[0], "./acc");
   strcpy(argv[1], "-o");
@@ -66,8 +66,8 @@ BOOST_AUTO_TEST_CASE(no_source_files) {
   // MOCK `argc` and `argv`
   int argc = 1;
   char **argv;
-  argv = (char **)malloc(argc);
-  argv[0] = (char *)malloc(100);
+  argv = (char **)malloc(argc * sizeof(char *));
+  argv[0] = (char *)malloc(100 * sizeof(char));
 
   strcpy(argv[0], "./acc");
 
@@ -88,11 +88,11 @@ BOOST_AUTO_TEST_CASE(correct_input) {
   // MOCK `argc` and `argv`
   int argc = 4;
   char **argv;
-  argv = (char **)malloc(argc);
-  argv[0] = (char *)malloc(100);
-  argv[1] = (char *)malloc(100);
-  argv[2] = (char *)malloc(100);
-  argv[3] = (char *)malloc(100);
+  argv = (char **)malloc(argc * sizeof(char *));
+  argv[0] = (char *)malloc(100 * sizeof(char));
+  argv[1] = (char *)malloc(100 * sizeof(char));
+  argv[2] = (char *)malloc(100 * sizeof(char));
+  argv[3] = (char *)malloc(100 * sizeof(char));
 
   std::string FILE_NAME = "main.cc";
   std::string OUTPUT_NAME = "main";
