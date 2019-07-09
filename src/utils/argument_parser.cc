@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include <utils/argument_parser.h>
 #include <utils/defaults.h>
 #include <utils/exit_codes.h>
