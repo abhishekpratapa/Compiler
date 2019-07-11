@@ -9,6 +9,7 @@
 namespace acc {
 namespace lexical_analyzer {
 
+// TODO: update token types
 enum TokenType {
   KEYWORD,
   IDENTIFIERS,
@@ -18,6 +19,7 @@ enum TokenType {
   OPERATORS
 };
 
+// TODO: update enumerated types
 struct Token {
   std::string value;
   TokenType type;

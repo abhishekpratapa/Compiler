@@ -31,5 +31,6 @@ Here are all of the internet pages I used to build this compiler. I really am st
 ##### Tokenizer:
 
 - [C Program to Detect Tokens](https://www.geeksforgeeks.org/c-program-detect-tokens-c-program/)
+- [Lexical Analyzer](https://rosettacode.org/wiki/Compiler/lexical_analyzer#C)
 - [C/C++ Tokens](https://www.geeksforgeeks.org/cc-tokens/)
 - [Basic Optimizations in C](https://www.geeksforgeeks.org/basic-code-optimizations-in-c/)
