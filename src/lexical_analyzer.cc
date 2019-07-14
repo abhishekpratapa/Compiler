@@ -13,9 +13,11 @@ Token get_token(FileReader &fr) {
 
   switch (value) {
   case EOF:
-    return (Token){EOI, 0, 0, boost::variant<int, char, std::string>(value)};
+    return (Token){EOI, fr.get_line(), fr.get_column(),
+                   boost::variant<int, char, std::string>(value)};
   default:
-    return (Token){String, 0, 0, boost::variant<int, char, std::string>(value)};
+    return (Token){String, fr.get_line(), fr.get_column(),
+                   boost::variant<int, char, std::string>(value)};
   }
 }
 
