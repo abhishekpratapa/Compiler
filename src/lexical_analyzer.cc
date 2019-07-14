@@ -6,11 +6,31 @@ using namespace acc::utils;
 namespace acc {
 namespace lexical_analyzer {
 
+Token get_token(FileReader &fr) {
+  char value = (char)fr.next();
+  while (isspace(value))
+    value = (char)fr.next();
+
+  switch (value) {
+  case EOF:
+    return (Token){EOI, 0, 0, boost::variant<int, char, std::string>(value)};
+  default:
+    return (Token){String, 0, 0, boost::variant<int, char, std::string>(value)};
+  }
+}
+
 std::vector<Token> tokenize_file(std::vector<std::string> &files) {
   std::vector<Token> token_vec;
-  
+
   for (size_t index = 0; index < files.size(); index++) {
-    std::string file_contents = read_file_contents(files.at(index));
+    FileReader file_reader(files.at(index));
+
+    Token next_token;
+
+    do {
+      next_token = get_token(file_reader);
+      token_vec.push_back(next_token);
+    } while (next_token.type != EOI);
   }
 
   return token_vec;

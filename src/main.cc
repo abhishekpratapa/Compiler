@@ -18,5 +18,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<Token> tokens = tokenize_file(file_list);
 
+  std::cout << tokens.size() << std::endl;
+
   return 0;
 }

@@ -7,7 +7,24 @@
 namespace acc {
 namespace utils {
 
-std::string read_file_contents(std::string &file_name);
+class FileReader {
+public:
+  FileReader() : m_line(1), m_column(0) {}
+  FileReader(std::string &file_name);
+  ~FileReader() {}
+
+  char next();
+  char peek();
+
+  size_t get_line();
+  size_t get_column();
+
+private:
+  size_t m_line;
+  size_t m_column;
+
+  std::ifstream m_file_ptr;
+};
 
 } // namespace utils
 } // namespace acc

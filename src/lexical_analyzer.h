@@ -1,6 +1,8 @@
 #ifndef LEXICAL_ANALYZER
 #define LEXICAL_ANALYZER
 
+#include <cctype>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -52,9 +54,10 @@ struct Token {
   int error_line;
   int error_column;
 
-  boost::variant<int, std::string> value;
+  boost::variant<int, char, std::string> value;
 };
 
+Token get_token(acc::utils::FileReader &fr);
 std::vector<Token> tokenize_file(std::vector<std::string> &files);
 
 } // namespace lexical_analyzer
