@@ -11,7 +11,6 @@ std::vector<Token> tokenize_file(std::vector<std::string> &files) {
   
   for (size_t index = 0; index < files.size(); index++) {
     std::string file_contents = read_file_contents(files.at(index));
-    
   }
 
   return token_vec;

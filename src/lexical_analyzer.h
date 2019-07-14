@@ -4,25 +4,55 @@
 #include <string>
 #include <vector>
 
+#include <boost/variant.hpp>
+
 #include <utils/file_utilities.h>
 
 namespace acc {
 namespace lexical_analyzer {
 
-// TODO: update token types
 enum TokenType {
-  KEYWORD,
-  IDENTIFIERS,
-  CONSTANTS,
-  STRINGS,
-  SPECIAL_SYMBOLS,
-  OPERATORS
+  Add,
+  And,
+  Assign,
+  Comma,
+  Division,
+  Else,
+  EOI,
+  Equal,
+  GreaterThanOrEqual,
+  GreaterThan,
+  Identifier,
+  If,
+  Integer,
+  LeftBrace,
+  LessThan,
+  LessThanOrEqual,
+  LeftParenthesis,
+  Lss,
+  Modulo,
+  Muliplication,
+  Negate,
+  NotEqual,
+  Not,
+  Or,
+  Print,
+  Putc,
+  RightBrace,
+  RightParenthesis,
+  Semicolon,
+  String,
+  Subtraction,
+  While
 };
 
-// TODO: update enumerated types
 struct Token {
-  std::string value;
   TokenType type;
+
+  int error_line;
+  int error_column;
+
+  boost::variant<int, std::string> value;
 };
 
 std::vector<Token> tokenize_file(std::vector<std::string> &files);
