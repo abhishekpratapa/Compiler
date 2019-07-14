@@ -13,6 +13,7 @@ set(src_files
   lexical_analyzer.cc
   utils/argument_parser.cc
   utils/file_utilities.cc
+  utils/token_utilities.cc
 )
 
 add_executable(acc

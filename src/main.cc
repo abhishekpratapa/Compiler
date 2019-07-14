@@ -2,6 +2,7 @@
 
 #include <lexical_analyzer.h>
 #include <utils/argument_parser.h>
+#include <utils/token_utilities.h>
 
 using namespace acc::lexical_analyzer;
 using namespace acc::utils;
@@ -18,7 +19,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<Token> tokens = tokenize_file(file_list);
 
-  std::cout << tokens.size() << std::endl;
+  print_tokens(tokens);
 
   return 0;
 }

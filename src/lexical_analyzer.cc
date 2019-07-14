@@ -10,7 +10,7 @@ Token get_token(FileReader &fr) {
   char value = (char)fr.next();
   while (isspace(value))
     value = (char)fr.next();
-
+  
   switch (value) {
   case EOF:
     return (Token){EOI, fr.get_line(), fr.get_column(),
