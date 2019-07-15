@@ -18,10 +18,12 @@ public:
 
   size_t get_line();
   size_t get_column();
+  char get_current_char();
 
 private:
   size_t m_line;
   size_t m_column;
+  char m_current_char;
 
   std::ifstream m_file_ptr;
 };

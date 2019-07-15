@@ -17,12 +17,18 @@ char FileReader::next() {
     m_column = 0;
   }
 
+  m_current_char = value;
+  
   return value;
 }
+
+char FileReader::peek() { return m_file_ptr.peek(); }
 
 size_t FileReader::get_line() { return m_line; }
 
 size_t FileReader::get_column() { return m_column; }
+
+char FileReader::get_current_char() { return m_current_char; }
 
 } // namespace utils
 } // namespace acc

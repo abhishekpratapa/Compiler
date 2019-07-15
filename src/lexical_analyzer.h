@@ -8,6 +8,7 @@
 
 #include <boost/variant.hpp>
 
+#include <utils/exit_codes.h>
 #include <utils/file_utilities.h>
 
 namespace acc {
@@ -57,8 +58,14 @@ struct Token {
   boost::variant<int, char, std::string> value;
 };
 
-Token get_token(acc::utils::FileReader &fr);
+Token get_token(utils::FileReader &fr);
+static Token char_lit(utils::FileReader &fr);
+static Token division_or_comment(utils::FileReader &fr);
+
 std::vector<Token> tokenize_file(std::vector<std::string> &files);
+
+static void error(ERROR_CODE error_code, utils::FileReader &fr, const char *fmt,
+                  ...);
 
 } // namespace lexical_analyzer
 } // namespace acc
