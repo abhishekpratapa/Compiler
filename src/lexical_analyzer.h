@@ -61,8 +61,14 @@ struct Token {
 Token get_token(utils::FileReader &fr);
 static Token char_lit(utils::FileReader &fr);
 static Token division_or_comment(utils::FileReader &fr);
+static Token follow(char expect, TokenType ifyes, TokenType ifno,
+                    utils::FileReader &fr);
+static Token string_literal(char start, utils::FileReader &fr);
+static Token identifier_or_int(char start, utils::FileReader &fr);
+static TokenType get_ident_type(const char *ident);
 
 std::vector<Token> tokenize_file(std::vector<std::string> &files);
+static int kwd_cmp(const void *p1, const void *p2);
 
 static void error(ERROR_CODE error_code, utils::FileReader &fr, const char *fmt,
                   ...);

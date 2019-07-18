@@ -15,6 +15,7 @@ public:
 
   char next();
   char peek();
+  void unget();
 
   size_t get_line();
   size_t get_column();
