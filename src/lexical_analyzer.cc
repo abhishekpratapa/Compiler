@@ -4,11 +4,15 @@
 
 #include <iostream>
 
+#include <cerrno>
+#include <cstdarg>
+
 using namespace acc::utils;
 
 namespace acc {
 namespace lexical_analyzer {
 
+// TODO: remove c style defines, convert to C++
 #define NELEMS(arr) (sizeof(arr) / sizeof(arr[0]))
 
 #define da_dim(name, type)                                                     \
@@ -118,12 +122,13 @@ static Token char_lit(FileReader &fr) {
 }
 
 static Token division_or_comment(FileReader &fr) {
-  if (fr.get_current_char() != '*')
+  char value = (char)fr.next();
+  if (value != '*')
     return (Token){
         Division, fr.get_line(), fr.get_column(),
         boost::variant<int, char, std::string>(fr.get_current_char())};
 
-  char value = (char)fr.next();
+  value = (char)fr.next();
 
   do {
     if (value == '*') {
@@ -202,17 +207,18 @@ static TokenType get_ident_type(const char *ident) {
 static Token identifier_or_int(char start, FileReader &fr) {
   int n;
   bool is_number = true;
-  
-  // HACK: redo this, it's a hack right now
+  char value;
+
   da_rewind(text);
-  char value = start;
-  while (isalnum(value) || value == '_') {
+  fr.unget();
+
+  while (isalnum(fr.peek()) || fr.peek() == '_') {
+    value = fr.next();
     da_append(text, (char)value);
     if (!isdigit(value))
       is_number = false;
-    value = fr.next();
   }
-  fr.unget();
+  
 
   if (da_len(text) == 0)
     error(LEXICAL_ANALYZER_UNRECOGNIZED_CHARACTER, fr,
