@@ -22,9 +22,7 @@ char FileReader::next() {
   return value;
 }
 
-void FileReader::unget() {
-  m_file_ptr.unget();
-}
+void FileReader::unget() { m_file_ptr.unget(); }
 
 char FileReader::peek() { return m_file_ptr.peek(); }
 

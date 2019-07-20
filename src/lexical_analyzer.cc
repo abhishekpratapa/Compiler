@@ -12,29 +12,6 @@ using namespace acc::utils;
 namespace acc {
 namespace lexical_analyzer {
 
-// TODO: remove c style defines, convert to C++
-#define NELEMS(arr) (sizeof(arr) / sizeof(arr[0]))
-
-#define da_dim(name, type)                                                     \
-  type *name = NULL;                                                           \
-  int _qy_##name##_p = 0;                                                      \
-  int _qy_##name##_max = 0
-#define da_rewind(name) _qy_##name##_p = 0
-#define da_redim(name)                                                         \
-  do {                                                                         \
-    if (_qy_##name##_p >= _qy_##name##_max)                                    \
-      name =                                                                   \
-          (char *)realloc(name, (_qy_##name##_max += 32) * sizeof(name[0]));   \
-  } while (0)
-#define da_append(name, x)                                                     \
-  do {                                                                         \
-    da_redim(name);                                                            \
-    name[_qy_##name##_p++] = x;                                                \
-  } while (0)
-#define da_len(name) _qy_##name##_p
-
-da_dim(text, char);
-
 Token get_token(FileReader &fr) {
   char value = (char)fr.next();
   while (isspace(value))
@@ -160,24 +137,24 @@ static Token follow(char expect, TokenType ifyes, TokenType ifno,
                  boost::variant<int, char, std::string>(value)};
 }
 
-// TODO: update to use C++ vs C style tokenization
 static Token string_literal(char start, FileReader &fr) {
-  // TODO: replace with std::string
-  da_rewind(text);
+  std::stringstream ss;
   char value = fr.next();
+
   while (value != start) {
     if (value == '\n')
       error(LEXICAL_ANALYZER_END_LINE, fr, "EOL in string");
     if (value == EOF)
       error(LEXICAL_ANALYZER_EOF, fr, "EOF in string");
-    da_append(text, (char)value);
+
+    ss << value;
     value = fr.next();
   }
 
-  da_append(text, '\0');
+  ss << '\0';
 
   return (Token){String, fr.get_line(), fr.get_column(),
-                 boost::variant<int, char, std::string>(std::string(text))};
+                 boost::variant<int, char, std::string>(ss.str())};
 }
 
 static int kwd_cmp(const void *p1, const void *p2) {
@@ -197,7 +174,8 @@ static TokenType get_ident_type(const char *ident) {
       },
     *kwp;
 
-  return (kwp = (TempTokenType *)bsearch(&ident, kwds, NELEMS(kwds),
+  return (kwp = (TempTokenType *)bsearch(&ident, kwds,
+                                         (sizeof(kwds) / sizeof(kwds[0])),
                                          sizeof(kwds[0]), kwd_cmp)) == NULL
              ? Identifier
              : kwp->sym;
@@ -209,35 +187,37 @@ static Token identifier_or_int(char start, FileReader &fr) {
   bool is_number = true;
   char value;
 
-  da_rewind(text);
+  // TODO: hack
+  std::stringstream ss;
   fr.unget();
 
   while (isalnum(fr.peek()) || fr.peek() == '_') {
     value = fr.next();
-    da_append(text, (char)value);
+    ss << value;
     if (!isdigit(value))
       is_number = false;
   }
-  
 
-  if (da_len(text) == 0)
+  if (ss.str().empty())
     error(LEXICAL_ANALYZER_UNRECOGNIZED_CHARACTER, fr,
           "gettok: unrecognized character (%d) '%c'\n", value, value);
 
-  da_append(text, '\0');
+  ss << '\0';
+  std::string text = ss.str();
 
   if (isdigit(text[0])) {
     if (!is_number)
-      error(LEXICAL_ANALYZER_INVALID_NUMBER, fr, "invalid number: %s\n", text);
-    n = strtol(text, NULL, 0);
+      error(LEXICAL_ANALYZER_INVALID_NUMBER, fr, "invalid number: %s\n",
+            text.c_str());
+    n = strtol(text.c_str(), NULL, 0);
     if (n == INT_MAX && errno == ERANGE)
       error(LEXICAL_ANALYZER_NUMBER_OUT_OF_RANGE, fr,
             "Number exceeds maximum value");
     return (Token){Integer, fr.get_line(), fr.get_column(),
                    boost::variant<int, char, std::string>(n)};
   }
-  return (Token){get_ident_type(text), fr.get_line(), fr.get_column(),
-                 boost::variant<int, char, std::string>(std::string(text))};
+  return (Token){get_ident_type(text.c_str()), fr.get_line(), fr.get_column(),
+                 boost::variant<int, char, std::string>(text)};
 }
 
 std::vector<Token> tokenize_file(std::vector<std::string> &files) {
