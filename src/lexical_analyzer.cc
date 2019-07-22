@@ -233,7 +233,7 @@ std::vector<Token> tokenize_file(std::vector<std::string> &files) {
       token_vec.push_back(next_token);
     } while (next_token.type != EOI);
   }
-
+  
   return token_vec;
 }
 
@@ -244,7 +244,7 @@ static void error(ERROR_CODE error_code, FileReader &fr, const char *fmt, ...) {
   va_start(ap, fmt);
   vsprintf(buf, fmt, ap);
   va_end(ap);
-  printf("(%lu,%lu) error: %s\n", fr.get_line(), fr.get_column(), buf);
+  printf("(%d,%d) error: %s\n", fr.get_line(), fr.get_column(), buf);
   exit(error_code);
 }
 

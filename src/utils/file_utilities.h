@@ -17,13 +17,13 @@ public:
   char peek();
   void unget();
 
-  size_t get_line();
-  size_t get_column();
+  int get_line();
+  int get_column();
   char get_current_char();
 
 private:
-  size_t m_line;
-  size_t m_column;
+  int m_line;
+  int m_column;
   char m_current_char;
 
   std::ifstream m_file_ptr;

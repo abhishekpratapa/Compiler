@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.12.4)
 project(Compiler)
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(EXECUTABLE_OUTPUT_PATH ${parent_directory}/target/)
 set(LIBRARY_OUTPUT_PATH ${parent_directory}/target/)
 
@@ -31,4 +35,9 @@ add_library(acc_testing
 
 target_link_libraries(acc_testing
   ${Boost_LIBRARIES}
+)
+
+set_target_properties(acc
+  PROPERTIES
+    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
 )
