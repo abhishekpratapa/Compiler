@@ -1,7 +1,8 @@
 # Compiler
 
 [![Build Status](https://travis-ci.com/abhishekpratapa/Compiler.svg?branch=master)](https://travis-ci.com/abhishekpratapa/Compiler)
-[![MIT License][license-badge]](LICENSE.md)
+[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg)](LICENSE.md)
+
 
 This is going to be my attempt at building a compiler. We'll see how it goes, and no this is not for a class project. I make my own classes and structs. Lolz.
 
@@ -38,5 +39,3 @@ Here are all of the internet pages I used to build this compiler. I really am st
 - [Lexical Analyzer](https://rosettacode.org/wiki/Compiler/lexical_analyzer#C)
 - [C/C++ Tokens](https://www.geeksforgeeks.org/cc-tokens/)
 - [Basic Optimizations in C](https://www.geeksforgeeks.org/basic-code-optimizations-in-c/)
-
-[license-badge]:   https://img.shields.io/badge/license-MIT-007EC7.svg
