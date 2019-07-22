@@ -30,6 +30,7 @@ matrix:
           packages:
             - g++-6
             - boost1.67
+            - lcov
     - env: COMPILER=g++-6 BUILD=Release STANDARD=14
       compiler: gcc
       addons:
@@ -41,6 +42,7 @@ matrix:
           packages:
             - g++-6
             - boost1.67
+            - lcov
 
 script:
   - free -m
@@ -52,3 +54,11 @@ script:
   - bash configure
   - bash scripts/make_compiler.sh $BUILD
   - bash scripts/run_tests.sh
+
+after_success:
+  # Create lcov report
+  - lcov --capture --directory ./src --output-file coverage.info
+  - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
+  - lcov --list coverage.info # debug info
+  # Uploading report to CodeCov
+  - bash <(curl -s https://codecov.io/bash) -t aee87863-024b-41c3-855f-f3937cd3feca -f coverage.info || echo "Codecov did not collect coverage reports"
