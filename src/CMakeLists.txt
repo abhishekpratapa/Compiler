@@ -27,7 +27,6 @@ add_executable(acc
 
 target_link_libraries(acc
   ${Boost_LIBRARIES}
-  gcov
 )
 
 add_library(acc_testing
@@ -36,10 +35,4 @@ add_library(acc_testing
 
 target_link_libraries(acc_testing
   ${Boost_LIBRARIES}
-)
-
-set_target_properties(acc_testing
-  PROPERTIES
-    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
-    LINK_FLAGS    "-fprofile-arcs -lgcov --coverage"
 )
