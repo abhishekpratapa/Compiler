@@ -36,8 +36,3 @@ add_library(acc_testing
 target_link_libraries(acc_testing
   ${Boost_LIBRARIES}
 )
-
-set_target_properties(acc
-  PROPERTIES
-    COMPILE_FLAGS "-ftest-coverage -fprofile-arcs"
-)
