@@ -22,11 +22,43 @@ using namespace acc::lexical_analyzer;
 BOOST_AUTO_TEST_SUITE(lexical_analyzer)
 
 BOOST_AUTO_TEST_CASE(simple_main) {
-  std::string file_name = root_test_path + "examples/main.c";
+  std::string file_name = root_test_path + "examples/simple_main.c";
   
   std::vector<std::string> file_list = {file_name};
   std::vector<Token> tokens = tokenize_file(file_list);
   BOOST_CHECK_EQUAL(tokens.size(), 10);
+
+  // TODO: check sequence of tokens
+}
+
+BOOST_AUTO_TEST_CASE(simple_arithmetic_main) {
+  std::string file_name = root_test_path + "examples/simple_arithmetic_main.c";
+  
+  std::vector<std::string> file_list = {file_name};
+  std::vector<Token> tokens = tokenize_file(file_list);
+  BOOST_CHECK_EQUAL(tokens.size(), 45);
+
+  // TODO: check sequence of tokens
+}
+
+BOOST_AUTO_TEST_CASE(simple_string_main) {
+  std::string file_name = root_test_path + "examples/simple_string_main.c";
+  
+  std::vector<std::string> file_list = {file_name};
+  std::vector<Token> tokens = tokenize_file(file_list);
+  BOOST_CHECK_EQUAL(tokens.size(), 15);
+
+  // TODO: check sequence of tokens
+}
+
+BOOST_AUTO_TEST_CASE(simple_conditionals_main) {
+  std::string file_name = root_test_path + "examples/simple_conditionals_main.c";
+  
+  std::vector<std::string> file_list = {file_name};
+  std::vector<Token> tokens = tokenize_file(file_list);
+  BOOST_CHECK_EQUAL(tokens.size(), 126);
+
+  // TODO: check sequence of tokens
 }
 
 BOOST_AUTO_TEST_SUITE_END()
