@@ -1,10 +1,4 @@
-#ifndef TEST_MAIN
-#define TEST_MAIN
-#define BOOST_TEST_MAIN
-#if !defined(WIN32)
-#define BOOST_TEST_DYN_LINK
-#endif
-#endif
+#include "main.h"
 
 #define BOOST_TEST_MODULE main
 
