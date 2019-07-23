@@ -1,6 +1,7 @@
 # Compiler
 
 [![Build Status](https://travis-ci.com/abhishekpratapa/Compiler.svg?branch=master)](https://travis-ci.com/abhishekpratapa/Compiler)
+[![codecov](https://codecov.io/gh/abhishekpratapa/Compiler/branch/master/graph/badge.svg)](https://codecov.io/gh/abhishekpratapa/Compiler)
 [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg)](LICENSE.md)
 
 
