@@ -13,13 +13,19 @@ set(src_includes ${PROJECT_SOURCE_DIR}/src)
 include(CodeCoverage)
 APPEND_COVERAGE_COMPILER_FLAGS()
 
-set(COVERAGE_LCOV_EXCLUDES '*usr/include/*' '*/usr/include/c++/*' '/usr/local/include/*' ${CMAKE_BINARY_DIR}'*')
+set(COVERAGE_LCOV_EXCLUDES
+  '*usr/include/*'
+  '*/usr/include/c++/*'
+  '/usr/local/include/*'
+  ${CMAKE_BINARY_DIR}'*'
+  ${src_includes}'/main.cc' # TODO: How do you test a main file?
+)
 
 setup_target_for_coverage_lcov(
   NAME test_compiler_coverage
   EXECUTABLE test_compiler
   DEPENDENCIES
-  	test_compiler
+    test_compiler
 )
 
 add_subdirectory(src)

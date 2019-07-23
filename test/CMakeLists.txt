@@ -30,4 +30,9 @@ add_custom_target(copy_example_files ALL
     COMMAND cmake -E copy_directory ${parent_directory}/examples ${EXECUTABLE_OUTPUT_PATH}/examples
     DEPENDS test_compiler)
 
+add_definitions(-DTEST_FILE_PATH="${EXECUTABLE_OUTPUT_PATH}")
 create_testing_executable(test_compiler test_main.cc)
+
+add_definitions(-DINDEPENDENT_TESTS)
+create_testing_executable(test_argument_parser test_argument_parser.cc)
+create_testing_executable(test_lexical_analyzer test_lexical_analyzer.cc)

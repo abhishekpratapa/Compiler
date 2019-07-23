@@ -2,5 +2,8 @@
 
 for entry in target/tests/*
 do
-  ./$entry
+  if [[ !($entry == *"test_compiler") && (-f $entry) ]]; then
+    ./$entry
+  fi
 done
+

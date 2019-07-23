@@ -1,3 +1,8 @@
+#ifdef INDEPENDENT_TESTS
+#include "test_main.h"
+#define BOOST_TEST_MODULE main
+#endif
+
 #include <boost/test/unit_test.hpp>
 #include <utils/argument_parser.h>
 
