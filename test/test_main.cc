@@ -1,4 +1,4 @@
-#include "main.h"
+#include "test_main.h"
 
 #define BOOST_TEST_MODULE main
 
