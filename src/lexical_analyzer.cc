@@ -75,12 +75,13 @@ Token get_token(FileReader &fr) {
 }
 
 static Token char_lit(FileReader &fr) {
-  char value = fr.get_current_char();
+  char value = fr.next();
   char current_value = value;
+
   if (value == '\'')
     error(LEXICAL_ANALYZER_EMPTY_CHAR, fr, "empty character constant");
   if (value == '\\') {
-    value = fr.get_current_char();
+    value = fr.next();
     if (value == 'n')
       current_value = 10;
     else if (value == '\\')
@@ -90,7 +91,7 @@ static Token char_lit(FileReader &fr) {
             value);
   }
 
-  if (fr.get_current_char() != '\'')
+  if (fr.next() != '\'')
     error(LEXICAL_ANALYZER_MULTILINE_CHAR_CONSTANT, fr,
           "multi-character constant");
 
