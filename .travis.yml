@@ -58,4 +58,4 @@ script:
 
 after_success:
   - lcov --list builds/"$BUILD"/test_compiler_coverage.info
-  - bash <(curl -s https://codecov.io/bash) -t aee87863-024b-41c3-855f-f3937cd3feca -f builds/Debug/test_compiler_coverage.info || echo "Codecov did not collect coverage reports"
+  - bash <(curl -s https://codecov.io/bash) -t aee87863-024b-41c3-855f-f3937cd3feca -f builds/"$BUILD"/test_compiler_coverage.info || echo "Codecov did not collect coverage reports"
