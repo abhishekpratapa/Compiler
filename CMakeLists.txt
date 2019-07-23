@@ -15,8 +15,7 @@ APPEND_COVERAGE_COMPILER_FLAGS()
 
 set(COVERAGE_LCOV_EXCLUDES
   '*usr/include/*'
-  '*/usr/include/c++/*'
-  '/usr/local/include/*'
+  '*/usr/local/include/*'
   ${CMAKE_BINARY_DIR}'*'
   ${src_includes}'/main.cc' # TODO: How do you test a main file?
 )

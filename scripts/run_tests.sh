@@ -6,4 +6,3 @@ do
     ./$entry
   fi
 done
-
