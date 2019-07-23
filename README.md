@@ -5,7 +5,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg)](LICENSE.md)
 
 
-This is going to be my attempt at building a compiler. We'll see how it goes, and no this is not for a class project. I make my own classes and structs. Lolz.
+This is going to be my attempt at building a compiler. We'll see how it goes. I make my own classes and structs. Lolz.
 
 ## Build
 
