@@ -46,7 +46,7 @@ BOOST_AUTO_TEST_CASE(simple_string_main) {
   
   std::vector<std::string> file_list = {file_name};
   std::vector<Token> tokens = tokenize_file(file_list);
-  BOOST_CHECK_EQUAL(tokens.size(), 28);
+  BOOST_CHECK_EQUAL(tokens.size(), 34);
 
   // TODO: check sequence of tokens
 }

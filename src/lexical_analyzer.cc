@@ -77,11 +77,11 @@ Token get_token(FileReader &fr) {
 static Token char_lit(FileReader &fr) {
   char value = fr.next();
   char current_value = value;
-  
+
   if (value == '\'')
     error(LEXICAL_ANALYZER_EMPTY_CHAR, fr, "empty character constant");
   if (value == '\\') {
-    value = fr.get_current_char();
+    value = fr.next();
     if (value == 'n')
       current_value = 10;
     else if (value == '\\')

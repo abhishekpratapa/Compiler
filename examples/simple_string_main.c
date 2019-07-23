@@ -1,8 +1,9 @@
 int main(){
   /* here is a comment */
   print("hello");
-  char letter, value;
+  char letter, new_line, slash;
   letter = 'a';
-  value = '0';
+  new_line = '\n';
+  new_line = '\\';
   return 0;
 }
