@@ -28,7 +28,6 @@ endfunction()
 
 add_custom_target(copy_example_files ALL
     COMMAND cmake -E copy_directory ${parent_directory}/examples ${EXECUTABLE_OUTPUT_PATH}/examples
-    DEPENDS test_lexical_analyzer)
+    DEPENDS test_compiler)
 
-create_testing_executable(test_argument_parser test_argument_parser.cc)
-create_testing_executable(test_lexical_analyzer test_lexical_analyzer.cc)
+create_testing_executable(test_compiler test_main.cc)

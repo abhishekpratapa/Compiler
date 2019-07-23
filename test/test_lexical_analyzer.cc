@@ -1,7 +1,3 @@
-#include "test_main.h"
-
-#define BOOST_TEST_MODULE main
-
 #include <boost/test/unit_test.hpp>
 #include <utils/argument_parser.h>
 #include <lexical_analyzer.h>
