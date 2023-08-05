@@ -1,4 +1,4 @@
-int main(){
+int main() {
   int addition = 3 + 2;
   int subtraction = 3 - 2;
   int multiplication = 3 * 2;

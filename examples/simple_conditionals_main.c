@@ -1,4 +1,4 @@
-int main(){
+int main() {
   if (4 < 3) {
     print("four is greater than three");
   }

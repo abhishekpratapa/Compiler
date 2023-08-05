@@ -1,4 +1,4 @@
-int main(){
+int main() {
   /* here is a comment */
   print("hello");
   char letter, new_line, slash;

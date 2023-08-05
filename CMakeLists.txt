@@ -1,31 +1,26 @@
 cmake_minimum_required(VERSION 3.10.2)
-project(Compiler)
+project(acc)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/deps/cmake)
-
-set(parent_directory ${PROJECT_SOURCE_DIR})
-set(src_includes ${PROJECT_SOURCE_DIR}/src)
+set(CMAKE_MODULE_PATH
+  ${PROJECT_SOURCE_DIR}/deps/cmake
+  ${PROJECT_SOURCE_DIR}/cmake
+)
 
 include(CodeCoverage)
-APPEND_COVERAGE_COMPILER_FLAGS()
+include(Utilities)
 
-set(COVERAGE_LCOV_EXCLUDES
-  '*usr/include/*'
-  '*/usr/local/include/*'
-  ${CMAKE_BINARY_DIR}'*'
-  ${src_includes}'/main.cc' # TODO: How do you test a main file?
-)
+enable_code_coverage()
 
-setup_target_for_coverage_lcov(
-  NAME test_compiler_coverage
-  EXECUTABLE test_compiler
-  DEPENDENCIES
-    test_compiler
-)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/target/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/target/libs)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/target/libs)
+
+add_subdirectory(extern)
 add_subdirectory(src)
 add_subdirectory(test)
